@@ -1,0 +1,58 @@
+table {
+	
+}
+input[type="text"] {
+	font-size: 12pt; 
+	/*color: #ff0000;*/
+	font-weight: bold; 
+	border: 1px solid #dedede; 
+	height: 26px; padding: 3px;
+}
+input[type="button"] {
+	background-color: #ffffff;
+	border: 2px solid #d0d0d0;
+	height: 30px;
+	margin: 2px;
+}
+input[type="button"]: hover {
+	cursor: pointer;
+	background-color: #f0f0f0;
+}
+th,td {
+	padding: 5px;
+}
+select {
+	margin: 3px;
+	height: 30px;
+	font-size: 12pt; 
+}
+select[name='os'] {
+	width: 359px;
+}
+input[type="text"][name="instance"] {
+	width: 244px;
+}
+/* Top Div */
+#div_notice {
+	margin: 10px;
+}
+/* LEFT Div */
+#div_instance_list {
+	width: 500px;
+	float: left;
+}
+#div_instance_list .div_instance {
+	width: 490px;
+	margin-top: 5px;
+}
+
+#div_instance_list .div_instance table {
+	border: 2px solid #d0d0d0;
+	margin: 2px;
+}
+
+/* RIGHT Div */
+#div_backup_calc {
+	width: 480px;
+	float: left;
+}
