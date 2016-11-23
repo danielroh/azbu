@@ -377,42 +377,51 @@ function create_OSCheckList(obj) {
 }
 
 function num_format(obj) {
-	var v1 = obj.value;
-	var vloc = v1.indexOf(",");
-	var vlen = v1.length;
-	//console.log(obj.parentsUntil(".div_instance"));
-	//
-	if(vloc < 0) {
-
-		$("input[name='"+obj.name+"'][cnt='"+obj.getAttribute("cnt")+"']").val(x);
-	}
-
+	var ttt = obj.value;
+	
+//jQuery Number Plugin 사용,
+	obj.value = $.number(ttt);
 	return;
+
+//자체 number_format 함수 구현,
+	//"0"으로 시작할 경우 예외처리,
+	if(parseInt(ttt.substr(0,1)) == 0) {
+		ttt = ttt.substr(1);
+	}
+	if(ttt < 1000) {
+		obj.value = ttt;
+	}
+	else {
+		var ttt_s = ttt.split(",").join("");
+		//console.log("ttt_s: "+ttt_s);
+		var ttt_l = (ttt_s+"").length;
+		//console.log("ttt_l: "+ttt_l);
+		var rst = new Array(); //결과 배열
+		var tmp = ttt_s;
+		for(var i = 1; i < (ttt_l / 3); i++) {
+			/* 0으로 시작하는 경우 오류 발생
+			rst[0] = tmp % 1000;
+			rst.unshift(parseInt(tmp / 1000));
+			*/
+			rst[0] = tmp.substr(-3);
+			rst.unshift(tmp.substr(0,tmp.length-3));
+			tmp = rst[0];
+			console.log(i+")-->"+rst);
+		}
+		obj.value = rst;
+	}
+	/*
 	var reg = /(^[+-]?\d+)(\d{3})/; 
 	var x = obj.value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-	/*
-	console.log(obj.value.replace(",", ""));
-	var x = obj.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	*/
-	$("input[name='"+obj.name+"']").val(x);
-}
-/*
-
-$("input[name='disk']").on('keyup', function(evt){
-	if (evt.which != 110 ){//not a fullstop
-        var n = parseFloat($(this).val().replace(/\,/g,''),10);
-        $(this).val(n.toLocaleString());
-    }
-});
-*/
-
-function set_cnt_to_disk(_cnt){
-	/*
-	var cnt = $(".div_instance").length;
-	console.log("여기에 length 찍히면 돼 : "+cnt);
-	*/
-	var div_instance = $(".div_instance[cnt='"+_cnt+"']");
 	
+	//var x = obj.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	*/
+	
+}
+
+//작동을 안하네...
+function set_cnt_to_disk(_cnt){
+	var div_instance = $(".div_instance[cnt='"+_cnt+"']");
 	div_instance.find(".disk_volume").attr('cnt', _cnt);
 	//$(".div_instance[cnt='"+cnt+"']").find(".disk_volume").attr('cnt') = cnt;
 }

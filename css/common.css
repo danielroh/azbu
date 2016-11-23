@@ -1,7 +1,7 @@
 table {
 	
 }
-input[type="text"] {
+input[type="text"], input[type="number"] {
 	font-size: 12pt; 
 	/*color: #ff0000;*/
 	font-weight: bold; 

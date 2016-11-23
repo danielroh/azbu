@@ -3,6 +3,7 @@
 <head>
 	<LINK rel="stylesheet" type="text/css" href="./css/common.css">
 	<SCRIPT type="text/javascript" src="./js/jquery-3.1.1.min.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="./js/jquery.number.min.js"></SCRIPT>
 	<SCRIPT type="text/javascript" src="./js/check_values.js"></SCRIPT>
 </head>
 <body>
@@ -32,10 +33,8 @@
 	/*
 	 * 작성자 : hmroh@tangunsoft.com
 	 */
-	$(document).ready(function(){
-		var ttt = "1234564";
-
-
+	$(document).ready(function() {
+		
 		$("#div_instance_list").find(".div_instance[cnt='0']").load("./html_instance_table.php");
 		set_cnt_to_disk(0);
 
