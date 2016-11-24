@@ -12,6 +12,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
 	},
 	W81: {
 		code_: "W81",
@@ -24,6 +25,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
 	},
 	W8: {
 		code_: "W8",
@@ -36,6 +38,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
 	},
 	W7: {
 		code_: "W7",
@@ -48,6 +51,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 1700,
 	},
 	WS2012R2: {
 		code_: "WS2012R2",
@@ -60,6 +64,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
 	},
 	WS2012: {
 		code_: "WS2012",
@@ -72,9 +77,10 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
 	},
-	WSS2012: {
-		code_: "WSS2012",
+	WSS2012R2: {
+		code_: "WSS2012R2",
 		name_: "Windows Storage Server 2012 R2",
 		type_: "Windows Server",
 		edition_: ["Standard", "Workgroup"],
@@ -84,6 +90,20 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
+	},
+	WSS2012: {
+		code_: "WSS2012",
+		name_: "Windows Storage Server 2012",
+		type_: "Windows Server",
+		edition_: ["Standard", "Workgroup"],
+		bit_: "64Bit",
+		sp_: 0,
+		physical_: ["ABA", "SCDPM", "ABS"],
+		hyperv_: ["ABA", "SCDPM", "ABS"],
+		vmware_: ["ABA", "SCDPM", "ABS"],
+		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 54400,
 	},
 	WS2008R2: {
 		code_: "WS2008R2",
@@ -96,6 +116,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 1700,
 	},
 	WS2008: {
 		code_: "WS2008",
@@ -108,6 +129,7 @@ OSCheckList = {
 		hyperv_: ["ABA", "SCDPM", "ABS"],
 		vmware_: ["ABA", "SCDPM", "ABS"],
 		azure_: ["ABA", "SCDPM", "ABS", "AVMB"],
+		datalimit_: 1700,
 	},
 	LNXCOS63: {
 		code_: "LNXCOS63",
@@ -120,6 +142,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXCOS64: {
 		code_: "LNXCOS64",
@@ -132,6 +155,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXDBN79: {
 		code_: "LNXDBN79",
@@ -144,6 +168,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXORC64: {
 		code_: "LNXORC64",
@@ -156,6 +181,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXORC70: {
 		code_: "LNXORC70",
@@ -168,6 +194,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXRHEL67: {
 		code_: "LNXRHEL67",
@@ -180,6 +207,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXRHEL71: {
 		code_: "LNXRHEL71",
@@ -192,6 +220,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXSLES11: {
 		code_: "LNXSLES11",
@@ -203,6 +232,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXSLES12: {
 		code_: "LNXSLES12",
@@ -215,6 +245,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXOPS132: {
 		code_: "LNXOPS132",
@@ -227,6 +258,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXUBT1204: {
 		code_: "LNXUBT1204",
@@ -239,6 +271,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXUBT1404: {
 		code_: "LNXUBT1404",
@@ -251,6 +284,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 	LNXUBT1604: {
 		code_: "LNXUBT1604",
@@ -263,6 +297,7 @@ OSCheckList = {
 		hyperv_: ["SCDPM", "ABS"],
 		vmware_: [],
 		azure_: ["AVMB"],
+		datalimit_: 0,
 	},
 };
 
@@ -399,7 +434,7 @@ function num_format(obj) {
 		var rst = new Array(); //결과 배열
 		var tmp = ttt_s;
 		for(var i = 1; i < (ttt_l / 3); i++) {
-			/* 0으로 시작하는 경우 오류 발생
+			/* 숫자형으로 변환 시, 0으로 시작하는 경우 오류 발생
 			rst[0] = tmp % 1000;
 			rst.unshift(parseInt(tmp / 1000));
 			*/
@@ -424,4 +459,26 @@ function set_cnt_to_disk(_cnt){
 	var div_instance = $(".div_instance[cnt='"+_cnt+"']");
 	div_instance.find(".disk_volume").attr('cnt', _cnt);
 	//$(".div_instance[cnt='"+cnt+"']").find(".disk_volume").attr('cnt') = cnt;
+}
+
+//select box 초기화,
+function init_selectbox(obj){
+	obj.find("option").each(function(){
+		if($(this).val() != "default") {
+			$(this).remove();
+		}
+	});
+}
+
+//계산하기,
+function calc_price(){
+	var _cnt = 0;
+	$(".div_instance").each(function(){
+		_cnt = $(this).attr("cnt");
+		console.log(_cnt);
+		$(".disk_volume").each(function(){
+			console.log($(this).val());
+		});
+		
+	});
 }

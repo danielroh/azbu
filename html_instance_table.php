@@ -16,7 +16,7 @@
 					<option value="W10">Windows 10</option>
 					<option value="W81">Windows 8.1</option>
 					<option value="W8">Windows 8</option>
-					<option value="W7SP1">Windows 7</option>
+					<option value="W7">Windows 7</option>
 					<!--option value="W10E">Windows 10 Enterprise</option>
 					<option value="W10P">Windows 10 Pro</option>
 					<option value="W10H">Windows 10 Home</option>
@@ -35,8 +35,8 @@
 					<option value="WS2012R2">Windows Server 2012 R2</option>
 					<option value="WS2012">Windows Server 2012</option>
 					<option value="WSS2012R2">Windows Storage Server 2012</option>
-					<option value="WS2008R2SP1">Windows Server 2008 R2</option>
-					<option value="WS2008SP2">Windows Server 2008</option>
+					<option value="WS2008R2">Windows Server 2008 R2</option>
+					<option value="WS2008">Windows Server 2008</option>
 					<!--option value="WS2012R2D">Windows Server 2012 R2 Datacenter [최신 SP]</option>
 					<option value="WS2012R2S">Windows Server 2012 R2 Standard [최신 SP]</option>
 					<option value="WS2012R2E">Windows Server 2012 R2 Essential [최신 SP]</option>
@@ -102,34 +102,27 @@
 		<th rowspan=4>볼륨정보</th>
 		<td>
 			Disk1:
-			<input type="text" class="disk_volume" name="disk1" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk1" placeholder="0" onKeyup="num_format(this);" /> GB 미만
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Disk2:
-			<input type="text" class="disk_volume" name="disk2" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk2" placeholder="0" onKeyup="num_format(this);" /> GB 미만
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Disk3:
-			<input type="text" class="disk_volume" name="disk3" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk3" placeholder="0" onKeyup="num_format(this);" /> GB 미만
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Disk4:
-			<input type="text" class="disk_volume" name="disk4" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk4" placeholder="0" onKeyup="num_format(this);" /> GB 미만
 		</td>
 	</td>
 
 </table>
 
-
-<SCRIPT type="text/javascript">
-$(document).ready(function(){
-	//alert($(".div_instance").length);
-});
-
-</SCRIPT>

@@ -27,10 +27,13 @@ select {
 	font-size: 12pt; 
 }
 select[name='os'] {
-	width: 359px;
+	width: 394px;
+}
+select[name='edition'] {
+	width: 135px;
 }
 input[type="text"][name="instance"] {
-	width: 244px;
+	width: 279px;
 }
 /* Top Div */
 #div_notice {
@@ -38,11 +41,11 @@ input[type="text"][name="instance"] {
 }
 /* LEFT Div */
 #div_instance_list {
-	width: 500px;
+	width: 530px;
 	float: left;
 }
 #div_instance_list .div_instance {
-	width: 490px;
+	width: 520px;
 	margin-top: 5px;
 }
 
@@ -53,6 +56,6 @@ input[type="text"][name="instance"] {
 
 /* RIGHT Div */
 #div_backup_calc {
-	width: 480px;
+	width: 500px;
 	float: left;
 }
