@@ -14,7 +14,7 @@
 				Linux환경 Backup은 반드시 상세 검증이 필요합니다. 
 			</li>
 			<li>
-				On-premise&lt-&gtAzure 및 Workload&lt-&gtAzure 데이터의 원활한 보호를 위해 다음 URL과 통신하도록 방화벽을 허용하는 것이 좋습니다.
+				On-premise&lt;-&gt;Azure 및 Workload&lt;-&gt;Azure 데이터의 원활한 보호를 위해 다음 URL과 통신하도록 방화벽을 허용하는 것이 좋습니다.
 				<ul>
 					<li>www.msftncsi.com</li>
 					<li>*.microsoft.com</li>
@@ -47,26 +47,36 @@
 	 * 작성자 : hmroh@tangunsoft.com
 	 */
 	$(document).ready(function() {
-		
+
+		//기본 인스턴스 블록 호출,
 		$("#div_instance_list").find(".div_instance[cnt='0']").load("./html_instance_table.php");
 		set_cnt_to_disk(0);
-		$("span#hidden").load("./script_instance_table.php");
 
+		//인스턴스 추가 버튼,
 		$("#add_instance_table").on("click", function(){
-			//충돌 방지를 위해 기존 스크립트 삭제, ----> 이거 해도 중복 발생함..다른 방법 찾아볼 것.
-			$("#div_instance_list").find("script").remove();
-
 			var cnt = $(".div_instance").length;
 			$("#div_instance_list").append("<div class=\"div_instance\" cnt=\""+cnt+"\">\r\n</div>");
 			$(".div_instance[cnt='"+cnt+"']").load("./html_instance_table.php");
 			set_cnt_to_disk(cnt);
-			$("span#hidden").load("./script_instance_table.php");
 		});
-		/*
-		$(".disk_volume").focusout(function() {
-			console.log($(this).value);
+
+		//OS 선택 시 이벤트,
+		$("#div_instance_list").on("change", "select[name='os']", function(){ 
+			//console.log('duplication check');
+			var this_table = $(this).parent().parent().parent().parent();
+			var os = $(this).val();
+
+			//선택박스 초기화,
+			init_selectbox($(this).parent().parent().parent().parent().find("select[name='edition']"));
+
+			//OS Edition Option블록 생성,
+			for(var k in OSCheckList[os].edition_) {
+				this_table
+					.find("select[name='edition']")
+					.append("<option value=\""+k+"\">"+OSCheckList[os].edition_[k]+"</option>");
+			}
+
 		});
-		*/
 	});
 	</SCRIPT>
 
