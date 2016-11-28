@@ -1,3 +1,6 @@
+body {
+	font-family: Malgun Gothic;
+}
 table {
 	
 }
@@ -35,18 +38,23 @@ select[name='edition'] {
 input[type="text"][name="instance"] {
 	width: 279px;
 }
+input.disk_volume{
+	text-align: right;
+	font-size: 18pt;
+	width: 77px;
+}
 /* Top Div */
 #div_notice {
 	margin: 10px;
 }
 /* LEFT Div */
 #div_instance_list {
-	width: 530px;
+	width: 522px;
 	float: left;
 }
 #div_instance_list .div_instance {
 	width: 520px;
-	margin-top: 5px;
+	margin: 5px 0px;
 }
 
 #div_instance_list .div_instance table {
@@ -56,6 +64,60 @@ input[type="text"][name="instance"] {
 
 /* RIGHT Div */
 #div_backup_calc {
-	width: 500px;
+	width: 520px;
+	margin-top: 34px;
 	float: left;
+}
+#div_backup_calc .calc_instance {
+	border: 2px solid #d0d0d0;
+	margin: 5px 2px;
+	padding: 0px 10px 10px 10px;
+	height: 216px;
+}
+#div_backup_calc .calc_instance .instance_title {
+	font-size: 18pt;
+	font-weight: bold;
+	padding: 5px;
+	border-bottom: 1px dotted #d0d0d0;
+}
+#div_backup_calc .calc_instance .protect_price {
+	
+}
+#div_backup_calc .calc_instance .calc_left, 
+#div_backup_calc .calc_instance .calc_right {
+	float: left;
+	width: 225px;
+	margin: 5px;
+	padding: 4px;
+	border: 1px solid #d0d0d0;
+}
+#div_backup_calc .calc_instance .selected_div {
+	background-color: #000000;
+	color: white;
+}
+#div_backup_calc .calc_instance .calc_left:hover, 
+#div_backup_calc .calc_instance .calc_right:hover {
+	cursor: pointer;
+	background-color: #909090;
+	color: white;
+}
+
+#div_backup_calc .calc_instance span.price {
+	font-size: 15pt;
+	font-weight: bold;
+	color: black;
+}
+#div_backup_calc .calc_instance .total_price {
+	position: relative;
+	height: 85px;
+}
+#div_backup_calc .calc_instance .total_price .price_option {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+}
+#div_backup_calc .calc_instance .total_price span.price {
+	font-size: 20pt;
+	color: red;
 }

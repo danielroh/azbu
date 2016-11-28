@@ -472,13 +472,54 @@ function init_selectbox(obj){
 
 //계산하기,
 function calc_price(){
+	//계산 영역 html 초기화,
+	$("#div_backup_calc").html('');
+
 	var _cnt = 0;
+	var _block = new Object();
+	var _diskblock = new Object();
+	var _voltotal = 0;
+	var _volval = 0;
 	$(".div_instance").each(function(){
-		_cnt = $(this).attr("cnt");
-		console.log(_cnt);
-		$(".disk_volume").each(function(){
-			console.log($(this).val());
+		_block = $(this);
+		_cnt = _block.attr("cnt"); //console.log("Block"+_cnt+" >");
+
+		//volume 용량 변수 초기화,
+		_voltotal = 0;
+		_volval = 0;
+		_block.find(".disk_volume").each(function(){
+			_diskblock = $(this);
+			_volval = _diskblock.val().replace(/,/g , "");
+			if(_volval != "") {
+				_volval = parseInt(_volval);
+				_voltotal += _volval;
+			}
+			else {
+				//console.log(" - "+_diskblock.attr('name')+" 내용 없음> "+_volval);
+			}
 		});
-		
+
+		$.ajax({
+		    type: 'post',
+		    url: '/ajax_calc.php',
+		    data: {
+		    	instance_name: _block.find("input[name='instance']").val(),
+		    	cnt: _cnt,
+		    	volume_total: _voltotal,
+		    },
+		    success: function (data) {
+		        //console.log("*** ajax 결과 : "+data);
+		        $("#div_backup_calc").append(data);
+		    },
+		    error: function (request, status, error) {
+		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
+		    }
+		});
 	});
+	
+	/*
+	for(_cnt in _voltotal){
+		$("#div_backup_calc").find(".calc_instance[cnt='"+_cnt+"']");
+	}
+	*/
 }

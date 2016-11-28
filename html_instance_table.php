@@ -1,7 +1,7 @@
 <table class="instance" border=0>
 	<tr>
 		<th>인스턴스명</th>
-		<td>
+		<td colspan=2>
 			<input type="text" name="instance" style="" />
 			<input type="button" id="del_instance_table" value="인스턴스 삭제" />
 		</td>
@@ -9,7 +9,7 @@
 	</tr>
 	<tr>
 		<th>운영체제</th>
-		<td>
+		<td colspan=2>
 			<select name="os">
 				<option selected="selected" value="default">OS Version</option>
 				<optgroup label="Windows Client">
@@ -102,25 +102,21 @@
 		<th rowspan=4>볼륨정보</th>
 		<td>
 			Disk1:
-			<input type="text" class="disk_volume" name="disk1" placeholder="0" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk1" placeholder="0" onKeyup="num_format(this);" /> GB
 		</td>
-	</tr>
-	<tr>
 		<td>
 			Disk2:
-			<input type="text" class="disk_volume" name="disk2" placeholder="0" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk2" placeholder="0" onKeyup="num_format(this);" /> GB
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Disk3:
-			<input type="text" class="disk_volume" name="disk3" placeholder="0" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk3" placeholder="0" onKeyup="num_format(this);" /> GB
 		</td>
-	</tr>
-	<tr>
 		<td>
 			Disk4:
-			<input type="text" class="disk_volume" name="disk4" placeholder="0" onKeyup="num_format(this);" /> GB 미만
+			<input type="text" class="disk_volume" name="disk4" placeholder="0" onKeyup="num_format(this);" /> GB
 		</td>
 	</td>
 
