@@ -506,6 +506,9 @@ function calc_price(){
 		    	instance_name: _block.find("input[name='instance']").val(),
 		    	cnt: _cnt,
 		    	volume_total: _voltotal,
+		    	os: _block.find("select[name='os']").val(),
+		    	edition: _block.find("select[name='edition']").val(),
+		    	env: _block.find("select[name='env']").val(),
 		    },
 		    success: function (data) {
 		        //console.log("*** ajax 결과 : "+data);
@@ -515,11 +518,8 @@ function calc_price(){
 		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
 		    }
 		});
+
 	});
 	
-	/*
-	for(_cnt in _voltotal){
-		$("#div_backup_calc").find(".calc_instance[cnt='"+_cnt+"']");
-	}
-	*/
+
 }

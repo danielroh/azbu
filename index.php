@@ -80,7 +80,6 @@
 			if(confirm("이 인스턴스를 삭제합니까?")){
 				$(this).parent().parent().parent().parent().parent().remove();
 				//계산된 내용이 있으면 재계산,
-				console.log($("#div_backup_calc").find(".calc_instance"));
 				if($("#div_backup_calc").find(".calc_instance").length > 0){
 					calc_price();
 				}

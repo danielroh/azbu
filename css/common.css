@@ -17,9 +17,10 @@ input[type="button"] {
 	height: 30px;
 	margin: 2px;
 }
-input[type="button"]: hover {
+input[type="button"]:hover {
 	cursor: pointer;
-	background-color: #f0f0f0;
+	background-color: #c0c0c0;
+	font-weight: bold;
 }
 th,td {
 	padding: 5px;
@@ -109,7 +110,7 @@ input.disk_volume{
 }
 #div_backup_calc .calc_instance .total_price {
 	position: relative;
-	height: 85px;
+	height: 56px;
 }
 #div_backup_calc .calc_instance .total_price .price_option {
 	position: absolute;
@@ -117,7 +118,11 @@ input.disk_volume{
 	right: 0;
 	text-align: right;
 }
-#div_backup_calc .calc_instance .total_price span.price {
+#div_backup_calc .calc_instance span.price.impact {
 	font-size: 20pt;
 	color: red;
+}
+#div_backup_calc .calc_instance .os_env_check {
+	height: 30px;
+	line-height: 30px;
 }

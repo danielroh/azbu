@@ -1,9 +1,12 @@
 <?php
 /*
 $_POST {
-	instance_name : 인스턴스 명,
-	cnt : 인스턴스 구분 번호,
-	volume_total : 인스턴스 디스크볼륨 총량,
+	instance_name : 인스턴스 명.
+	cnt : 인스턴스 구분 번호.
+	volume_total : 인스턴스 디스크볼륨 총량.
+	os: default, W10, W81, WS2012R2, LNXCOS63 등등.
+	edition: OS Edition 정보이며, 확인 연산에 쓰이진 않음.
+	env: default, physical, hyperv, vmware, azure.
 }
 */
 
@@ -82,12 +85,15 @@ else{
 			지역 중복 저장소(GRS) 사용료 : <span class="price"><?php echo number_format($p_storage['GRS']); ?>원</span>/월
 		</div>
 	</div>
+	<div class="os_env_check">
+		OS 및 환경 검토 : 
+	</div>
 	<div class="total_price">
 		<div class="LRS price_option" style="display: block;">
-			약 <span class="price"><?php echo number_format(ceil(($p_protect + $p_storage['LRS'])/1000)*1000); ?>원</span>/월
+			약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['LRS'])/1000)*1000); ?>원</span>/월
 		</div>
 		<div class="GRS price_option" style="display: none;">
-			약 <span class="price"><?php echo number_format(ceil(($p_protect + $p_storage['GRS'])/1000)*1000); ?>원</span>/월
+			약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['GRS'])/1000)*1000); ?>원</span>/월
 		</div>
 	</div>
 
