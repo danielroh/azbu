@@ -63,6 +63,9 @@ input.disk_volume{
 	margin: 2px;
 }
 
+#div_instance_list .div_instance .del_instance_table{
+}
+
 /* RIGHT Div */
 #div_backup_calc {
 	width: 520px;

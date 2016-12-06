@@ -3,7 +3,7 @@
 		<th>인스턴스명</th>
 		<td colspan=2>
 			<input type="text" name="instance" style="" />
-			<input type="button" id="del_instance_table" value="인스턴스 삭제" />
+			<input type="button" class="del_instance_table" value="인스턴스 삭제" />
 		</td>
 		
 	</tr>

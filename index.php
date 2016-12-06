@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<LINK rel="stylesheet" type="text/css" href="./css/common.css">
+	<LINK rel="stylesheet" type="text/css" href="./css/common.css" />
 	<SCRIPT type="text/javascript" src="./js/jquery-3.1.1.min.js"></SCRIPT>
 	<SCRIPT type="text/javascript" src="./js/jquery.number.min.js"></SCRIPT>
 	<SCRIPT type="text/javascript" src="./js/check_values.js"></SCRIPT>
@@ -76,7 +76,7 @@
 		});
 
 		//인스턴스 삭제 버튼,
-		$("#div_instance_list").on("click", "#del_instance_table", function(){
+		$("#div_instance_list").on("click", ".del_instance_table", function(){
 			if(confirm("이 인스턴스를 삭제합니까?")){
 				$(this).parent().parent().parent().parent().parent().remove();
 				//계산된 내용이 있으면 재계산,
@@ -98,16 +98,36 @@
 			var this_table = $(this).parent().parent().parent().parent();
 			var os = $(this).val();
 
-			//선택박스 초기화,
+			//OS Edition 선택박스 초기화,
 			init_selectbox($(this).parent().parent().parent().parent().find("select[name='edition']"));
 
-			//OS Edition Option블록 생성,
-			for(var k in OSCheckList[os].edition_) {
-				this_table
-					.find("select[name='edition']")
-					.append("<option value=\""+k+"\">"+OSCheckList[os].edition_[k]+"</option>");
-			}
-
+			$.ajax({
+				type: 'post',
+				url: '/ajax_envcheck.php',
+				data: {
+					action: 'get_editions',
+					oscode: os,
+				},
+				dataType: 'json',
+				cache: false,
+				success: function (data) {
+					/*
+					var ttt = data;
+			        console.log("*** ajax 결과 : "+ttt+"("+(typeof ttt)+")");
+			        */
+			        if(data.length > 0) {
+			        	//OS Edition 선택박스 Option 블록 생성,
+				        for(var k in data) {
+				        	this_table
+							.find("select[name='edition']")
+							.append("<option value=\""+k+"\">"+data[k]+"</option>");
+				        }
+				    }
+			    },
+			    error: function (request, status, error) {
+			    	console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
+			    }
+			});
 		});
 
 		//저장소 타입 Radio 버튼,
@@ -123,6 +143,19 @@
 			ci_block.find("div."+s_type).css("display", "block");
 			$(this).parent().addClass("selected_div");
 		});
+/*
+		var tmp_html = "<pre>";
+		for(var k in OSCheckList){
+			tmp_html += "'"+ k +"' => array(<br />";
+			for(var kk in OSCheckList[k]) {
+				tmp_html += "	'"+ kk +"' => '"+ OSCheckList[k][kk] +"',"
+				tmp_html += "<br />";
+			}
+			tmp_html += "<br />	), <br />";
+		}
+		tmp_html += "</pre>";
+		$("#div_backup_calc").html(tmp_html);
+*/
 	});
 	</SCRIPT>
 
