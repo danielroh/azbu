@@ -32,20 +32,20 @@
 		</ul>
 
 	</div>
+	<div id="wrapper">
+		<div id="div_instance_list">
+			<input type="button" id="add_instance_table" class="top_button" value="인스턴스 추가" />
+			<input type="button" id="calc" class="top_button" value="계산하기" />
+			<br />
+			<div class="div_instance" cnt="0">
+				<!--// -->
+			</div>
+		</div>
 
-	<div id="div_instance_list">
-		<input type="button" id="add_instance_table" value="인스턴스 추가" />
-		<input type="button" id="calc" value="계산하기" />
-		<br />
-		<div class="div_instance" cnt="0">
-			<!--// -->
+		<div id="div_backup_calc">
+
 		</div>
 	</div>
-
-	<div id="div_backup_calc">
-
-	</div>
-	
 	<span id="hidden"></span>
 
 	<SCRIPT type="text/javascript">
@@ -103,7 +103,7 @@
 
 			$.ajax({
 				type: 'post',
-				url: '/ajax_envcheck.php',
+				url: '/ajax_calc.php',
 				data: {
 					action: 'get_editions',
 					oscode: os,
@@ -118,9 +118,11 @@
 			        if(data.length > 0) {
 			        	//OS Edition 선택박스 Option 블록 생성,
 				        for(var k in data) {
-				        	this_table
-							.find("select[name='edition']")
-							.append("<option value=\""+k+"\">"+data[k]+"</option>");
+				        	if('' != data[k]) {
+					        	this_table
+								.find("select[name='edition']")
+								.append("<option value=\""+k+"\">"+data[k]+"</option>");
+							}
 				        }
 				    }
 			    },

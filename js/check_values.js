@@ -490,7 +490,7 @@ function calc_price(){
 		_block.find(".disk_volume").each(function(){
 			_diskblock = $(this);
 			_volval = _diskblock.val().replace(/,/g , "");
-			if(_volval != "") {
+			if(_volval.trim() != "") {
 				_volval = parseInt(_volval);
 				_voltotal += _volval;
 			}
@@ -503,10 +503,11 @@ function calc_price(){
 		    type: 'post',
 		    url: '/ajax_calc.php',
 		    data: {
+		    	action: 'calculate',
 		    	instance_name: _block.find("input[name='instance']").val(),
 		    	cnt: _cnt,
 		    	volume_total: _voltotal,
-		    	os: _block.find("select[name='os']").val(),
+		    	oscode: _block.find("select[name='os']").val(),
 		    	edition: _block.find("select[name='edition']").val(),
 		    	env: _block.find("select[name='env']").val(),
 		    },

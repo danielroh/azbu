@@ -4,6 +4,10 @@ body {
 table {
 	
 }
+div#wrapper {
+	/*width: 530px;*/
+	margin: 0px auto;
+}
 input[type="text"], input[type="number"] {
 	font-size: 12pt; 
 	/*color: #ff0000;*/
@@ -19,7 +23,7 @@ input[type="button"] {
 }
 input[type="button"]:hover {
 	cursor: pointer;
-	background-color: #c0c0c0;
+	background-color: #dfdfdf;
 	font-weight: bold;
 }
 th,td {
@@ -53,6 +57,11 @@ input.disk_volume{
 	width: 522px;
 	float: left;
 }
+#div_instance_list .top_button {
+	height: 50px;
+	font-size: 16pt;
+	width: 253px;
+}
 #div_instance_list .div_instance {
 	width: 520px;
 	margin: 5px 0px;
@@ -69,7 +78,7 @@ input.disk_volume{
 /* RIGHT Div */
 #div_backup_calc {
 	width: 520px;
-	margin-top: 34px;
+	margin-top: 54px;
 	float: left;
 }
 #div_backup_calc .calc_instance {
@@ -77,6 +86,8 @@ input.disk_volume{
 	margin: 5px 2px;
 	padding: 0px 10px 10px 10px;
 	height: 216px;
+	position: relative;
+	font-size: 10pt;
 }
 #div_backup_calc .calc_instance .instance_title {
 	font-size: 18pt;
@@ -84,41 +95,54 @@ input.disk_volume{
 	padding: 5px;
 	border-bottom: 1px dotted #d0d0d0;
 }
-#div_backup_calc .calc_instance .protect_price {
-	
-}
-#div_backup_calc .calc_instance .calc_left, 
-#div_backup_calc .calc_instance .calc_right {
+#div_backup_calc .calc_instance .option_block div {
 	float: left;
 	width: 225px;
 	margin: 5px;
 	padding: 4px;
 	border: 1px solid #d0d0d0;
+	font-size: 12pt;
 }
-#div_backup_calc .calc_instance .selected_div {
-	background-color: #000000;
+#div_backup_calc .calc_instance .protect_price {
+}
+#div_backup_calc .calc_instance .storage_price {	
+}
+#div_backup_calc .calc_instance .calc_left.selected_div {
+	background-color: #00AA00;
 	color: white;
+	font-weight: bold;
 }
-#div_backup_calc .calc_instance .calc_left:hover, 
+#div_backup_calc .calc_instance .calc_right.selected_div {
+	background-color: #F7B203;
+	color: white;
+	font-weight: bold;
+}
+#div_backup_calc .calc_instance .calc_left:hover {
+	cursor: pointer;
+	background-color: #CBF7CB;
+	color: black;
+	font-weight: normal;
+}
 #div_backup_calc .calc_instance .calc_right:hover {
 	cursor: pointer;
-	background-color: #909090;
-	color: white;
+	background-color: #FCDF97;
+	color: black;
+	font-weight: normal;
 }
 
 #div_backup_calc .calc_instance span.price {
-	font-size: 15pt;
+	font-size: 12pt;
 	font-weight: bold;
 	color: black;
 }
 #div_backup_calc .calc_instance .total_price {
-	position: relative;
-	height: 56px;
-}
-#div_backup_calc .calc_instance .total_price .price_option {
 	position: absolute;
 	bottom: 0;
 	right: 0;
+	height: 56px;
+}
+#div_backup_calc .calc_instance .total_price .price_option {
+	padding: 10px;
 	text-align: right;
 }
 #div_backup_calc .calc_instance span.price.impact {
@@ -128,4 +152,8 @@ input.disk_volume{
 #div_backup_calc .calc_instance .os_env_check {
 	height: 30px;
 	line-height: 30px;
+	margin-top: 6px;
+}
+#div_backup_calc .calc_instance .os_env_check .backup_desc {
+	font-size: 10pt;
 }
