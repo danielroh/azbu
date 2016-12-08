@@ -468,13 +468,31 @@ class EnvClass
 		return ($code == 'default')? 'default' :  $this->OSInfo[$code]['sp_'];
 	}
 
-	public function check_env($oscode, $env) {
-		$rst_desc = ""; //결과가 저장되는 변수.
-		
-		if($oscode == "default" || $env == "default") {
-			$rst_desc .= "<font color='red'>OS와 환경 정보를 모두 선택해주세요.</font>";
+	private function get_error_text() {
+		return "<font color='red'>OS와 환경 정보를 모두 선택해주세요.</font>";
+	}
+
+	public function check_volume_total($oscode, $volume_total) {
+		if($oscode == "default") {
+			return -1;
 		}
 		else {
+			$limit = intval($this->OSInfo[$oscode]['datalimit_']);
+			if($limit == 0 || $limit < $volume_total) {
+				return 0;
+			}
+			else {
+				return 1;
+			}
+		}
+	}
+	public function check_env($oscode, $env) {
+		if($oscode == "default" || $env == "default") {
+			return $this->get_error_text();
+		}
+		else {
+			$rst_desc = ""; //결과가 저장되는 변수.
+
 			$info = $this->OSInfo[$oscode];
 			$OStype = $info['type_'];
 			
@@ -491,10 +509,8 @@ class EnvClass
 			if($is_possible == false) {
 				$rst_desc .= "<font color='red'>백업 가능한 시나리오가 없습니다. 다른 환경을 선택해주세요.</font>";
 			}
+			return $rst_desc;
 		}
-
-		return $rst_desc;
-
 	}
 }
 
@@ -505,13 +521,6 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 	$_Action = $_POST['action'];
 } else {
 	echo "<script>alert('js [action] parameter Error!');</script>";
-	return;
-}
-if(isset($_POST['oscode']) && !empty($_POST['oscode'])) {
-	$_OSCode = $_POST['oscode'];
-	$_OSName = $env_obj->get_os_name($_OSCode);
-} else {
-	echo "<script>alert('js [oscode] parameter Error!');</script>";
 	return;
 }
 
@@ -527,16 +536,35 @@ switch ($_Action) {
 		$_OSCode = $_POST['oscode'];
 		//$_OSName = $env_obj->get_os_name($_OSCode);
 		$_Env = $_POST['env'];
+		$_VolTotal = $_POST['volume_total'];
+
+		//총 용량 검사
+		$chk_volume = $env_obj->check_volume_total($_OSCode, $_VolTotal); 
+		switch ($chk_volume) {
+			case -1:
+				$chk_volume_desc = "<font color=gray>(용량 한도값 없음.)</font>";
+				break;
+			case 0:
+				$chk_volume_desc = "<font color=red>(용량 한도 초과!)</font>";
+				break;
+			default:
+				$chk_volume_desc = "";
+				break;
+		}
 
 		//인스턴스 보호 비용
-		$p_protect = $price_obj->get_protection_price($_POST['volume_total']);
+		$p_protect = 0;
+		$p_protect = $price_obj->get_protection_price($_VolTotal);
 
 		//저장소 비용 ['LRS', 'GRS']
-		$p_storage = $price_obj->get_storage_price($_POST['volume_total']);
+		$p_storage = array();
+		$p_storage['LRS'] = 0;
+		$p_storage['GRS'] = 0;
+		$p_storage = $price_obj->get_storage_price($_VolTotal);
 
-		//환경 검사
-		$description = "기본값;";
-		$description = $env_obj->check_env($_OSCode, $_Env);
+		//가능한 백업 옵션 검사
+		$backup_option = "---html---";
+		$backup_option = $env_obj->check_env($_OSCode, $_Env);
 ?>
 
 <div class="calc_instance" cnt="<?php echo $_POST['cnt']; ?>">
@@ -562,14 +590,16 @@ switch ($_Action) {
 	<div class="storage_price">
 		<div class="LRS price_option" style="display: block;">
 			로컬 중복 저장소(LRS) 사용료 : <span class="price"><?php echo number_format($p_storage['LRS']); ?>원</span>/월
+			<?php echo $chk_volume_desc; ?>
 		</div>
 		<div class="GRS price_option" style="display: none;">
 			지역 중복 저장소(GRS) 사용료 : <span class="price"><?php echo number_format($p_storage['GRS']); ?>원</span>/월
+			<?php echo $chk_volume_desc; ?>
 		</div>
 	</div>
 	<div class="os_env_check">
 		<div class="backup_desc">
-			<?php echo $description; ?>
+			<?php echo $backup_option; ?>
 		</div>
 	</div>
 	<div class="total_price">
