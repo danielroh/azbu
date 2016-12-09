@@ -478,7 +478,10 @@ class EnvClass
 		}
 		else {
 			$limit = intval($this->OSInfo[$oscode]['datalimit_']);
-			if($limit == 0 || $limit < $volume_total) {
+			if($limit == 0) {
+				return -1;
+			}
+			elseif($limit < $volume_total) {
 				return 0;
 			}
 			else {
@@ -528,7 +531,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 switch ($_Action) {
 	case 'get_editions':
 		$_OSCode = $_POST['oscode'];
-		$_OSName = $env_obj->get_os_name($_OSCode);
+		//$_OSName = $env_obj->get_os_name($_OSCode);
 		echo $env_obj->get_edition_list($_OSCode);
 		break;
 
