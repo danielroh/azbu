@@ -2,53 +2,40 @@
 
 
 function num_format(obj) {
-	var ttt = obj.value;
+	var objVal = obj.value;
 	
 //jQuery Number Plugin 사용,
-	obj.value = $.number(ttt);
+	obj.value = $.number(objVal);
 	return;
 
 //자체 number_format 함수 구현,
 	//"0"으로 시작할 경우 예외처리,
-	if(parseInt(ttt.substr(0,1)) == 0) {
-		ttt = ttt.substr(1);
+	if(parseInt(objVal.substr(0,1)) == 0) {
+		objVal = objVal.substr(1);
 	}
-	if(ttt < 1000) {
-		obj.value = ttt;
+	if(objVal < 1000) {
+		obj.value = objVal;
 	}
 	else {
-		var ttt_s = ttt.split(",").join("");
-		//console.log("ttt_s: "+ttt_s);
-		var ttt_l = (ttt_s+"").length;
-		//console.log("ttt_l: "+ttt_l);
+		var objVal_onlyNum = objVal.split(",").join("");
+		//console.log("objVal_onlyNum: "+objVal_onlyNum);
+		var objVal_len = (objVal_onlyNum+"").length;
+		//console.log("objVal_len: "+objVal_len);
 		var rst = new Array(); //결과 배열
-		var tmp = ttt_s;
-		for(var i = 1; i < (ttt_l / 3); i++) {
+		var vNum = objVal_onlyNum;
+		for(var i = 1; i < (objVal_len / 3); i++) {
 			/* 숫자형으로 변환 시, 0으로 시작하는 경우 오류 발생
-			rst[0] = tmp % 1000;
-			rst.unshift(parseInt(tmp / 1000));
+			rst[0] = vNum % 1000;
+			rst.unshift(parseInt(vNum / 1000));
 			*/
-			rst[0] = tmp.substr(-3);
-			rst.unshift(tmp.substr(0,tmp.length-3));
-			tmp = rst[0];
+			rst[0] = vNum.substr(-3);
+			rst.unshift(vNum.substr(0,vNum.length-3));
+			vNum = rst[0];
 			console.log(i+")-->"+rst);
 		}
 		obj.value = rst;
 	}
-	/*
-	var reg = /(^[+-]?\d+)(\d{3})/; 
-	var x = obj.value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 	
-	//var x = obj.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	*/
-	
-}
-
-//작동을 안하네...
-function set_cnt_to_disk(_cnt){
-	var div_instance = $(".div_instance[cnt='"+_cnt+"']");
-	div_instance.find(".disk_volume").attr('cnt', _cnt);
-	//$(".div_instance[cnt='"+cnt+"']").find(".disk_volume").attr('cnt') = cnt;
 }
 
 //select box 초기화,

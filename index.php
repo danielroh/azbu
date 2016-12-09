@@ -56,29 +56,24 @@
 
 		//기본 인스턴스 블록 호출,
 		$("#div_instance_list").find(".div_instance[cnt='0']").load("./html_instance_table.php");
-		//set_cnt_to_disk(0);
-
+		
 		//인스턴스 추가 버튼,
 		$("#add_instance_table").on("click", function(){
 			var cnt = 0;
-			//console.log("begin cnt : "+cnt);
 			$(".div_instance").each(function(){
-				//console.log('cnt -->>'+parseInt($(this).attr('cnt')));
 				if(parseInt($(this).attr('cnt')) >= cnt){
 					cnt = parseInt($(this).attr('cnt'));
 				}
 			});
 			cnt++;
-			//console.log("exit cnt : "+cnt);
 			$("#div_instance_list").append("<div class=\"div_instance\" cnt=\""+cnt+"\">\r\n</div>");
 			$(".div_instance[cnt='"+cnt+"']").load("./html_instance_table.php");
-			//set_cnt_to_disk(cnt);
 		});
 
 		//인스턴스 삭제 버튼,
 		$("#div_instance_list").on("click", ".del_instance_table", function(){
 			if(confirm("이 인스턴스를 삭제합니까?")){
-				$(this).parent().parent().parent().parent().parent().remove();
+				$(this).closest(".div_instance").remove();
 				//계산된 내용이 있으면 재계산,
 				if($("#div_backup_calc").find(".calc_instance").length > 0){
 					calc_price();
@@ -94,12 +89,11 @@
 
 		//OS 선택 시 이벤트,
 		$("#div_instance_list").on("change", "select[name='os']", function(){ 
-			//console.log('duplication check');
-			var this_table = $(this).parent().parent().parent().parent();
+			var this_table = $(this).closest("table.instance");
 			var os = $(this).val();
 
 			//OS Edition 선택박스 초기화,
-			init_selectbox($(this).parent().parent().parent().parent().find("select[name='edition']"));
+			init_selectbox(this_table.find("select[name='edition']"));
 
 			$.ajax({
 				type: 'post',
@@ -135,7 +129,7 @@
 		//저장소 타입 Radio 버튼,
 		$("#div_backup_calc").on("click", "input[type='radio']", function(){
 			//reset radio button,
-			var ci_block = $(this).parent().parent().parent().parent();
+			var ci_block = $(this).closest(".calc_instance");
 			ci_block.find("input[name='storage_type']").removeAttr("checked");
 			ci_block.find(".calc_left").removeClass("selected_div");
 			ci_block.find(".calc_right").removeClass("selected_div");
@@ -145,19 +139,6 @@
 			ci_block.find("div."+s_type).css("display", "block");
 			$(this).parent().addClass("selected_div");
 		});
-/*
-		var tmp_html = "<pre>";
-		for(var k in OSCheckList){
-			tmp_html += "'"+ k +"' => array(<br />";
-			for(var kk in OSCheckList[k]) {
-				tmp_html += "	'"+ kk +"' => '"+ OSCheckList[k][kk] +"',"
-				tmp_html += "<br />";
-			}
-			tmp_html += "<br />	), <br />";
-		}
-		tmp_html += "</pre>";
-		$("#div_backup_calc").html(tmp_html);
-*/
 	});
 	</SCRIPT>
 

@@ -17,19 +17,6 @@
 					<option value="W81">Windows 8.1</option>
 					<option value="W8">Windows 8</option>
 					<option value="W7">Windows 7</option>
-					<!--option value="W10E">Windows 10 Enterprise</option>
-					<option value="W10P">Windows 10 Pro</option>
-					<option value="W10H">Windows 10 Home</option>
-					<option value="W81E">Windows 8.1 Enterprise [최신 SP]</option>
-					<option value="W81P">Windows 8.1 Pro [최신 SP]</option>
-					<option value="W8E">Windows 8 Enterprise [최신 SP]</option>
-					<option value="W8P">Windows 8 Pro [최신 SP]</option>
-					<option value="W7U">Windows 7 Ultimate [최신 SP]</option>
-					<option value="W7E">Windows 7 Enterprise [최신 SP]</option>
-					<option value="W7P">Windows 7 Professional [최신 SP]</option>
-					<option value="W7HP">Windows 7 Home Premium [최신 SP]</option>
-					<option value="W7HB">Windows 7 Home Basic [최신 SP]</option>
-					<option value="W7S">Windows 7 Starter [최신 SP]</option-->
 				</optgroup>
 				<optgroup label="Windows Server">
 					<option value="WS2012R2">Windows Server 2012 R2</option>
@@ -37,23 +24,6 @@
 					<option value="WSS2012R2">Windows Storage Server 2012</option>
 					<option value="WS2008R2">Windows Server 2008 R2</option>
 					<option value="WS2008">Windows Server 2008</option>
-					<!--option value="WS2012R2D">Windows Server 2012 R2 Datacenter [최신 SP]</option>
-					<option value="WS2012R2S">Windows Server 2012 R2 Standard [최신 SP]</option>
-					<option value="WS2012R2E">Windows Server 2012 R2 Essential [최신 SP]</option>
-					<option value="WS2012R2F">Windows Server 2012 R2 Foundation [최신 SP]</option>
-					<option value="WS2012D">Windows Server 2012 Datacenter [최신 SP]</option>
-					<option value="WS2012F">Windows Server 2012 Foundation [최신 SP]</option>
-					<option value="WS2012S">Windows Server 2012 Standard [최신 SP]</option>
-					<option value="WSS2012R2S">Windows Storage Server 2012 R2 Standard [최신 SP]</option>
-					<option value="WSS2012R2W">Windows Storage Server 2012 R2 Workgroup [최신 SP]</option>
-					<option value="WS2008R2DSP1">Windows Server 2008 R2 Datacenter [SP1]</option>
-					<option value="WS2008R2SSP1">Windows Server 2008 R2 Standard [SP1]</option>
-					<option value="WS2008R2ESP1">Windows Server 2008 R2 Enterprise [SP1]</option>
-					<option value="WS2008R2FSP1">Windows Server 2008 R2 Foundation [SP1]</option>
-					<option value="WS2008DSP2">Windows Server 2008 Datacenter [SP2]</option>
-					<option value="WS2008SSP2">Windows Server 2008 Standard [SP2]</option>
-					<option value="WS2008ESP2">Windows Server 2008 Enterprise [SP2]</option>
-					<option value="WS2008FSP2">Windows Server 2008 Foundation [SP2]</option-->
 				</optgroup>
 				<optgroup label="Linux">
 					<option value="LNXCOS63">CentOS 6.3</option>
@@ -70,20 +40,6 @@
 					<option value="LNXUBT1404">Ubuntu 14.04</option>
 					<option value="LNXUBT1604">Ubuntu 16.04</option>
 				</optgroup>
-				<!--optgroup label="Azure Linux VM - CentOS">
-					<option value="LNXCOS63">CentOS 6.3</option>
-					<option value="LNXCOS64">CentOS 6.4</option>
-					<option value="LNXCOS65">CentOS 6.5</option>
-					<option value="LNXCOS66">CentOS 6.6</option>
-					<option value="LNXCOS67">CentOS 6.7</option>
-					<option value="LNXCOS68">CentOS 6.8</option>
-					<option value="LNXCOS70">CentOS 7.0</option>
-					<option value="LNXCOS71">CentOS 7.1</option>
-					<option value="LNXCOS72">CentOS 7.2</option>
-				</optgroup>
-				<optgroup label="Azure Linux VM - Debian">
-					<option value="LNXDBN79">Debian 7.9</option>
-				</optgroup-->
 			</select>
 			<br />
 			<select name="edition">
