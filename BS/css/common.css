@@ -1,0 +1,16 @@
+#div_notice {
+	border: 2px solid red;
+	margin: 10px;
+	font-size: 1.2em;
+}
+#div_notice ul {
+	margin-top: 10px;
+}
+
+.btn {
+	border-radius: 3px;
+}
+
+input[name='instance'] {
+	height: 34px;
+}
