@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<LINK rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
     <LINK rel="stylesheet" type="text/css" href="./css/font-awesome.min.css" />
-    <LINK rel="stylesheet" type="text/css" href="./css/bootstrap-select-1.12.1.css" />
+    <!--LINK rel="stylesheet" type="text/css" href="./css/bootstrap-select-1.12.1.css" /-->
 	<LINK rel="stylesheet" type="text/css" href="./css/common.css" />
-
-	<SCRIPT type="text/javascript" src="./js/jquery-3.1.1.min.js"></SCRIPT>
-	<SCRIPT type="text/javascript" src="./js/jquery.number.min.js"></SCRIPT>
-	<SCRIPT type="text/javascript" src="./js/bootstrap-select-1.12.1.js"></SCRIPT>
-	<SCRIPT type="text/javascript" src="./js/check_values.js"></SCRIPT>
 </head>
-<body>
-
-	<div id="div_notice">
+<body class="container-fluid">
+	<div id="div_notice" class="row">
 		<ul>
 			<li>
 				Linux환경 Backup은 반드시 상세 검증이 필요합니다. 
@@ -38,21 +32,29 @@
 		</ul>
 
 	</div>
-	<div id="wrapper" class="row">
-		<div id="div_function_buttons" class="col-lg-12">
-			<input type="button" id="add_instance_table" class="btn btn-primary btn-lg top_button" value="인스턴스 추가" />
+	<div id="div_function_buttons" class="row">
+		<div class="div_for_margin col-xs-6 col-md-6 col-lg-6">
+			<input type="button" id="add_instance_card" class="btn btn-primary btn-lg top_button" value="인스턴스 추가" />
+		</div>
+		<div class="div_for_margin col-xs-6 col-md-6 col-lg-6">
 			<input type="button" id="calc" class="btn btn-success btn-lg top_button" value="계산하기" />
 		</div>
-		<div id="div_instance_list" class="col-lg-6">
-			<div class="div_instance" cnt="0">
+	</div>
+	<div id="wrapper" class="row">
+		<div id="div_instance_list" class="col-xs-12 col-md-6 col-lg-6">
+			<div class="div_instance row" cnt="0">
 				<!--// -->
 			</div>
 		</div>
-		<div id="div_backup_calc" class="col-lg-6">
+		<div id="div_backup_calc" class="col-xs-12 col-md-6 col-lg-6">
 		</div>
 	</div>
 	<span id="hidden"></span>
 
+	<SCRIPT type="text/javascript" src="./js/jquery-3.1.1.min.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="./js/jquery.number.min.js"></SCRIPT>
+	<!--SCRIPT type="text/javascript" src="./js/bootstrap-select-1.12.1.js"></SCRIPT-->
+	<SCRIPT type="text/javascript" src="./js/check_values.js"></SCRIPT>
 	<SCRIPT type="text/javascript">
 	/*
 	 * 작성자 : hmroh@tangunsoft.com
@@ -60,10 +62,10 @@
 	$(document).ready(function() {
 
 		//기본 인스턴스 블록 호출,
-		$("#div_instance_list").find(".div_instance[cnt='0']").load("./html_instance_table.php");
+		$("#div_instance_list").find(".div_instance[cnt='0']").load("./html_instance_card.php");
 		
 		//인스턴스 추가 버튼,
-		$("#add_instance_table").on("click", function(){
+		$("#add_instance_card").on("click", function(){
 			var cnt = 0;
 			$(".div_instance").each(function(){
 				if(parseInt($(this).attr('cnt')) >= cnt){
@@ -71,12 +73,12 @@
 				}
 			});
 			cnt++;
-			$("#div_instance_list").append("<div class=\"div_instance\" cnt=\""+cnt+"\">\r\n</div>");
-			$(".div_instance[cnt='"+cnt+"']").load("./html_instance_table.php");
+			$("#div_instance_list").append("<div class=\"div_instance row\" cnt=\""+cnt+"\">\r\n</div>");
+			$(".div_instance[cnt='"+cnt+"']").load("./html_instance_card.php");
 		});
 
 		//인스턴스 삭제 버튼,
-		$("#div_instance_list").on("click", "input[name='del_instance_card']", function(){
+		$("#div_instance_list").on("click", ".del_instance_card", function(){
 			if(confirm("이 인스턴스를 삭제합니까?")){
 				$(this).closest(".div_instance").remove();
 				//계산된 내용이 있으면 재계산,
@@ -97,11 +99,11 @@
 
 		//OS 선택 시 이벤트,
 		$("#div_instance_list").on("change", "select[name='os']", function(){ 
-			var this_table = $(this).closest("table.instance");
+			var this_card = $(this).closest(".div_instance ");
 			var os = $(this).val();
 
 			//OS Edition 선택박스 초기화,
-			init_selectbox(this_table.find("select[name='edition']"));
+			init_selectbox(this_card.find("select[name='edition']"));
 
 			$.ajax({
 				type: 'post',
@@ -121,7 +123,7 @@
 			        	//OS Edition 선택박스 Option 블록 생성,
 				        for(var k in data) {
 				        	if('' != data[k]) {
-					        	this_table
+					        	this_card
 								.find("select[name='edition']")
 								.append("<option value=\""+k+"\">"+data[k]+"</option>");
 							}
@@ -149,6 +151,5 @@
 		});
 	});
 	</SCRIPT>
-
 </body>
 </html>

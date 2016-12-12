@@ -1,16 +1,89 @@
+/* ================================
+	Bootstrap Classes
+================================ */
+.btn {
+	border-radius: 4px;
+}
+
+/* ================================
+	Common Classes
+================================ */
+input[type='text'] {
+	height: 38px;
+	font-size: 1.2em;
+}
+select {
+	height: 38px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/* ================================
+	Optional Classes
+================================ */
+.card-header {
+	border-bottom: 1px dashed #ccc;
+	padding-bottom: 10px;
+}
+.card-title {
+
+}
+.card-text {
+	font-size: 1.2em;
+}
+.env_area .div_for_margin {
+	padding: 4px;
+}
+.env_area .div_for_margin * {
+	width: 100%;
+}
+.volume_area {
+	font-size: 1em;
+}
+.volume_area .div_for_margin {
+	padding: 0px 4px;
+}
+
 #div_notice {
 	border: 2px solid red;
-	margin: 10px;
-	font-size: 1.2em;
+	margin: 4px;
+	padding-right: 20px;
+	font-size: 0.9em;
 }
 #div_notice ul {
 	margin-top: 10px;
 }
-
-.btn {
-	border-radius: 3px;
+#div_function_buttons {
+	padding: 0px 15px;
 }
-
-input[name='instance'] {
-	height: 34px;
+#div_function_buttons .div_for_margin {
+	padding: 4px;
+}
+#div_function_buttons .div_for_margin * {
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+.div_instance {
+	background-color: #EBF2FF;
+	padding: 20px 10px;
+	margin: 10px;
+	border-radius: 4px;
+	border: 3px solid #D9E5FF;
+	position: relative;
+}
+img.del_instance_card {
+	position: absolute;
+	right: -12px;
+	top: -15px;
+	width: 30px;
+	opacity: 0.4;
+}
+img.del_instance_card:hover {
+	opacity: 1.0;
+	cursor: pointer;
+}
+.div_instance:hover img.del_instance_card {
+	display: block;
 }
