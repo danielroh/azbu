@@ -47,6 +47,7 @@
 			</div>
 		</div>
 		<div id="div_backup_calc" class="col-xs-12 col-md-6 col-lg-6">
+			<!--// -->
 		</div>
 	</div>
 	<span id="hidden"></span>
@@ -54,6 +55,7 @@
 	<SCRIPT type="text/javascript" src="./js/jquery-3.1.1.min.js"></SCRIPT>
 	<SCRIPT type="text/javascript" src="./js/jquery.number.min.js"></SCRIPT>
 	<!--SCRIPT type="text/javascript" src="./js/bootstrap-select-1.12.1.js"></SCRIPT-->
+	<SCRIPT type="text/javascript" src="./js/bootstrap.min-3.3.7.js"></SCRIPT>
 	<SCRIPT type="text/javascript" src="./js/check_values.js"></SCRIPT>
 	<SCRIPT type="text/javascript">
 	/*
@@ -135,7 +137,7 @@
 			    }
 			});
 		});
-
+/*
 		//저장소 타입 Radio 버튼,
 		$("#div_backup_calc").on("click", "input[type='radio']", function(){
 			//reset radio button,
@@ -149,6 +151,8 @@
 			ci_block.find("div."+s_type).css("display", "block");
 			$(this).parent().addClass("selected_div");
 		});
+*/
+
 	});
 	</SCRIPT>
 </body>

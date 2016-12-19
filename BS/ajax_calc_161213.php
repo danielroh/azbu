@@ -577,49 +577,51 @@ switch ($_Action) {
 		$backup_option = "---html---";
 		$backup_option = $env_obj->check_env($_OSCode, $_Env);
 ?>
-<div class="calc_instance" cnt="<?php echo $_POST['cnt']; ?>">
-	<ul class="nav nav-tabs nav-justified">
-		<li class="nav-item active">
-			<a class="nav-link" href="" data-target="#tab<?php echo $_POST['cnt']; ?>_1" data-toggle="tab" aria-expanded="true">로컬 중복 저장소(LRS)</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="" data-target="#tab<?php echo $_POST['cnt']; ?>_2" data-toggle="tab" aria-expanded="false">지역 중복 저장소(GRS)</a>
-		</li>
-	</ul>
 
-	<div class="calc-header">
+<div class="calc_instance" cnt="<?php echo $_POST['cnt']; ?>">
+	<div class="instance_title">
 		<?php echo trim($_POST['instance_name']) == ""? "(이름없음)" : $_POST['instance_name']; ?>
 	</div>
-	<div class="calc-content tab-content">
-		<div class="protect_price">
-			인스턴스 보호 비용 : 
-			<span class="price"><?php echo number_format($p_protect); ?>원</span>/월
+	<div class="option_block">
+		<label>
+		<div class="calc_left selected_div">
+			<input type="radio" name="storage_type<?php echo $_POST['cnt']; ?>" value="LRS" checked="true" />로컬 중복 저장소(LRS)
 		</div>
-        <div class="tab-pane fade LRS active in" id="tab<?php echo $_POST['cnt']; ?>_1" aria-expanded="true">
-			<div class="storage_price">
-				로컬 중복 저장소(LRS) 사용료 : <span class="price"><?php echo number_format($p_storage['LRS']); ?>원</span>/월
-				<?php echo $chk_volume_desc; ?>
-			</div>
-			<div class="backup_desc">
-				<?php echo $backup_option; ?>
-			</div>
-			<div class="total_price">
-				약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['LRS'])/1000)*1000); ?>원</span>/월
-			</div>
+		</label>
+		<label>
+		<div class="calc_right">
+			<input type="radio" name="storage_type<?php echo $_POST['cnt']; ?>" value="GRS" />지역 중복 저장소(GRS)
 		</div>
-		<div class="tab-pane fade GRS" id="tab<?php echo $_POST['cnt']; ?>_2" aria-expanded="false">
-			<div class="storage_price">
-				지역 중복 저장소(GRS) 사용료 : <span class="price"><?php echo number_format($p_storage['GRS']); ?>원</span>/월
-				<?php echo $chk_volume_desc; ?>
-			</div>
-			<div class="backup_desc">
-				<?php echo $backup_option; ?>
-			</div>
-			<div class="total_price">
-				약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['GRS'])/1000)*1000); ?>원</span>/월
-			</div>
+		</label>
+	</div>
+	<div class="protect_price">
+		인스턴스 보호 비용 : 
+		<span class="price"><?php echo number_format($p_protect); ?>원</span>/월
+	</div>
+	<div class="storage_price">
+		<div class="LRS price_option" style="display: block;">
+			로컬 중복 저장소(LRS) 사용료 : <span class="price"><?php echo number_format($p_storage['LRS']); ?>원</span>/월
+			<?php echo $chk_volume_desc; ?>
+		</div>
+		<div class="GRS price_option" style="display: none;">
+			지역 중복 저장소(GRS) 사용료 : <span class="price"><?php echo number_format($p_storage['GRS']); ?>원</span>/월
+			<?php echo $chk_volume_desc; ?>
 		</div>
 	</div>
+	<div class="os_env_check">
+		<div class="backup_desc">
+			<?php echo $backup_option; ?>
+		</div>
+	</div>
+	<div class="total_price">
+		<div class="LRS price_option" style="display: block;">
+			약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['LRS'])/1000)*1000); ?>원</span>/월
+		</div>
+		<div class="GRS price_option" style="display: none;">
+			약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['GRS'])/1000)*1000); ?>원</span>/월
+		</div>
+	</div>
+
 </div>
 
 <?php

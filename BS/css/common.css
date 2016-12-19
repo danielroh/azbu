@@ -4,6 +4,9 @@
 .btn {
 	border-radius: 4px;
 }
+.nav-item {
+	background-color: #d0e9ff;
+}
 
 /* ================================
 	Common Classes
@@ -22,14 +25,23 @@ select {
 /* ================================
 	Optional Classes
 ================================ */
-.card-header {
-	border-bottom: 1px dashed #ccc;
-	padding-bottom: 10px;
+.calc-header {
+	padding: 10px;
+	border-style: solid;
+    border-width: 0px 1px 0px 1px;
+    border-color: #ddd;
+	border-bottom: 1px dashed #ddd;
 }
-.card-title {
+.calc-content {
+	padding: 10px;
+	border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #ddd;
+}
+.instance-title {
 
 }
-.card-text {
+.instance-text {
 	font-size: 1.2em;
 }
 .env_area .div_for_margin {
@@ -66,9 +78,10 @@ select {
 	font-size: 1.4em;
 }
 .div_instance {
-	background-color: #EBF2FF;
+	background-color: #d0e9ff;
 	padding: 20px 10px;
 	margin: 10px;
+	height: 310px;
 	border-radius: 4px;
 	border: 3px solid #D9E5FF;
 	position: relative;
@@ -87,3 +100,16 @@ img.del_instance_card:hover {
 .div_instance:hover img.del_instance_card {
 	display: block;
 }
+
+
+input[name='instance'] {
+	border: 0px;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+

@@ -84,7 +84,7 @@ function calc_price(){
 
 		$.ajax({
 		    type: 'post',
-		    url: '/ajax_calc.php',
+		    url: './ajax_calc.php',
 		    data: {
 		    	action: 'calculate',
 		    	instance_name: _block.find("input[name='instance']").val(),

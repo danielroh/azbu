@@ -1,11 +1,11 @@
 
-<div class="card-header">
+<div class="instance-header">
     <input type="text" name="instance" class="form-control" placeholder="인스턴스 이름" style="" />
     <!--input type="button" name="del_instance_card" class="btn btn-danger btn-md" value="인스턴스 삭제" /-->
     <img class="del_instance_card" src="./image/icon/btn_close.png" />
 </div>
-<div class="card-block">
-    <div class="card-text env_area">
+<div class="instance-block">
+    <div class="instance-text env_area">
         <div class="div_for_margin col-xs-12">
             <select name="os">
                 <option selected="selected" value="default">OS Version</option>
@@ -39,12 +39,12 @@
                 </optgroup>
             </select>
         </div>
-        <div class="div_for_margin col-xs-5 col-md-5 col-lg-5">
+        <div class="div_for_margin col-xs-12 col-md-5 col-lg-5">
             <select name="edition">
                 <option value="default" selected="selected">OS Edition</option>
             </select>
         </div>
-        <div class="div_for_margin col-xs-7 col-md-7 col-lg-7">
+        <div class="div_for_margin col-xs-12 col-md-7 col-lg-7">
             <select name="env">
                 <option value="default" selected="selected">환경 선택</option>
                 <option value="physical">On-premise - Physical Machine</option>
@@ -54,7 +54,7 @@
             </select>
         </div>
     </div>
-    <div class="card-text volume_area">
+    <div class="instance-text volume_area">
         <div class="div_for_margin col-xs-6 col-md-6 col-lg-3">
             Disk1 (단위: GB)
             <input type="text" class="form-control disk_volume" name="disk1" placeholder="0" onKeyup="num_format(this);" />
