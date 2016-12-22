@@ -72,5 +72,4 @@
             <input type="text" class="form-control disk_volume" name="disk4" placeholder="0" onKeyup="num_format(this);" />
         </div>
     </div>
-    <div class="clearfix"> </div>
 </div>

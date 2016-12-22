@@ -68,15 +68,17 @@
 		
 		//인스턴스 추가 버튼,
 		$("#add_instance_card").on("click", function(){
+			var $instance_list = $("#div_instance_list");
+
 			var cnt = 0;
-			$(".div_instance").each(function(){
+			$instance_list.find(".div_instance").each(function(){
 				if(parseInt($(this).attr('cnt')) >= cnt){
 					cnt = parseInt($(this).attr('cnt'));
 				}
 			});
 			cnt++;
-			$("#div_instance_list").append("<div class=\"div_instance row\" cnt=\""+cnt+"\">\r\n</div>");
-			$(".div_instance[cnt='"+cnt+"']").load("./html_instance_card.php");
+			$instance_list.append("<div class=\"div_instance row\" cnt=\""+cnt+"\">\r\n</div>");
+			$instance_list.find(".div_instance[cnt='"+cnt+"']").load("./html_instance_card.php");
 		});
 
 		//인스턴스 삭제 버튼,

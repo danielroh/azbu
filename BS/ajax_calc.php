@@ -473,7 +473,7 @@ class EnvClass
 	}
 
 	private function get_error_text() {
-		return "<font color='red'>OS와 환경 정보를 모두 선택해주세요.</font>";
+		return "<font color='gray'>!!--OS와 환경 정보를 모두 선택해주세요.--!!</font>";
 	}
 
 	public function check_volume_total($oscode, $volume_total) {

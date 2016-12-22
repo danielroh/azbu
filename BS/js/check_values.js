@@ -83,6 +83,7 @@ function calc_price(){
 		});
 
 		$.ajax({
+			async: false,
 		    type: 'post',
 		    url: './ajax_calc.php',
 		    data: {
@@ -95,8 +96,9 @@ function calc_price(){
 		    	env: _block.find("select[name='env']").val(),
 		    },
 		    success: function (data) {
-		        //console.log("*** ajax 결과 : "+data);
-		        $("#div_backup_calc").append(data);
+		        //console.log(_cnt + "ajax success + ");
+   		        $("#div_backup_calc").append(data);
+
 		    },
 		    error: function (request, status, error) {
 		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
