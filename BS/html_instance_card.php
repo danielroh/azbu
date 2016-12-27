@@ -6,7 +6,7 @@
 </div>
 <div class="instance-block">
     <div class="instance-text env_area">
-        <div class="div_for_margin col-xs-12">
+        <div class="div_for_margin col-xs-12 col-lg-5">
             <select name="os">
                 <option selected="selected" value="default">OS Version</option>
                 <optgroup label="Windows Client">
@@ -39,12 +39,12 @@
                 </optgroup>
             </select>
         </div>
-        <div class="div_for_margin col-xs-12 col-md-5 col-lg-5">
+        <div class="div_for_margin col-xs-12 col-md-5 col-lg-3">
             <select name="edition">
                 <option value="default" selected="selected">OS Edition</option>
             </select>
         </div>
-        <div class="div_for_margin col-xs-12 col-md-7 col-lg-7">
+        <div class="div_for_margin col-xs-12 col-md-7 col-lg-4">
             <select name="env">
                 <option value="default" selected="selected">환경 선택</option>
                 <option value="physical">On-premise - Physical Machine</option>

@@ -98,7 +98,7 @@ function calc_price(){
 		    success: function (data) {
 		        //console.log(_cnt + "ajax success + ");
    		        $("#div_backup_calc").append(data);
-
+   		        $('[data-toggle="popover"]').popover({placement: "top"}); 
 		    },
 		    error: function (request, status, error) {
 		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);

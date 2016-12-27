@@ -26,6 +26,9 @@
 /* ================================
 	Common Attributes
 ================================ */
+body {
+	max-width: 1400px;
+}
 input[type='text'] {
 	height: 38px;
 	font-size: 1.2em;
@@ -50,6 +53,9 @@ span.price {
 /* ================================
 	Optional Classes
 ================================ */
+.calc_instance {
+	margin: 10px;
+}
 .calc-header {
 	padding: 10px;
 	border-style: solid;
@@ -72,7 +78,7 @@ span.price {
 	font-size: 1.2em;
 }
 .env_area .div_for_margin {
-	padding: 4px 0px;
+	padding: 4px;
 }
 .env_area .div_for_margin * {
 	width: 100%;
@@ -141,7 +147,9 @@ img.del_instance_card:hover {
 	font-weight: bold;
 }
 
-
+.backup_desc .available_type {
+	margin-right: 10px;
+}
 
 
 

@@ -418,7 +418,7 @@ class EnvClass
 			'name_' => "Azure Backup (MARS) Agent",
 			'protect_' => array(self::p_FF),
 			'where_' => array(self::w_Az),
-			'exp_' => "최대 하루 3회 백업, 응용 프로그램 인식 안함, Linux 지원 안함.",
+			'exp_' => "최대 하루 3회 백업.<br />응용 프로그램 인식 안함.<br />Linux 지원 안함.",
 			'physical_' => array("Windows Client", "Windows Server"),
 			'hyperv_' => array("Windows Client", "Windows Server"),
 			'vmware_' => array("Windows Client", "Windows Server"),
@@ -429,7 +429,7 @@ class EnvClass
 			'name_' => "System Center DPM",
 			'protect_' => array(self::p_FF, self::p_VL, self::p_VM, self::p_AP, self::p_WL),
 			'where_' => array(self::w_Az, self::w_Lc, self::w_Tp),
-			'exp_' => "최대 하루 2회 백업, Oracle Workload 백업 지원 안함, Linux는 Hyper-V에 호스팅된 경우에만 백업 가능, VMware VM은 DPM 2012 R2로 백업 가능.",
+			'exp_' => "최대 하루 2회 백업.<br />Oracle Workload 백업 지원 안함.<br />Linux는 Hyper-V에 호스팅된 경우에만 백업 가능.<br />VMware VM은 DPM 2012 R2로 백업 가능.",
 			'physical_' => array("Windows Client", "Windows Server"),
 			'hyperv_' => array("Windows Client", "Windows Server", "Linux"),
 			'vmware_' => array("Windows Client", "Windows Server"),
@@ -440,7 +440,7 @@ class EnvClass
 			'name_' => "Azure Backup Server",
 			'protect_' => array(self::p_FF, self::p_VL, self::p_VM, self::p_AP, self::p_WL),
 			'where_' => array(self::w_Az, self::w_Lc),
-			'exp_' => "최대 하루 2회 백업, VMware VM/Oracle Workload 백업 지원 안함, Linux는 Hyper-V에 호스팅된 경우에만 백업 가능, 활성화 되어있는 Azure 구독 반드시 필요, Tape 백업 지원 안함, System Center License 필요 없음.",
+			'exp_' => "최대 하루 2회 백업.<br />VMware VM/Oracle Workload 백업 지원 안함.<br />Linux는 Hyper-V에 호스팅된 경우에만 백업 가능.<br />활성화 되어있는 Azure 구독 반드시 필요.<br />Tape 백업 지원 안함.<br />System Center License 필요 없음.",
 			'physical_' => array("Windows Client", "Windows Server"),
 			'hyperv_' => array("Windows Client", "Windows Server", "Linux"),
 			'vmware_' => array(),
@@ -451,7 +451,7 @@ class EnvClass
 			'name_' => "Azure IaaS VM Backup",
 			'protect_' => array(self::p_VM, self::p_DK),
 			'where_' => array(self::w_Az),
-			'exp_' => "최대 하루 1회 백업, Disk 수준으로 VM 복원, On-premise VM 대상이 아닌 Azure VM만 지원, Agent 프로그램 설치 불필요, Backup Infrastructure가 필요없는 Fabric 수준 백업.",
+			'exp_' => "최대 하루 1회 백업.<br />Disk 수준으로 VM 복원.<br />On-premise VM 대상이 아닌 Azure VM만 지원.<br />Agent 프로그램 설치 불필요.<br />Backup Infrastructure가 필요없는 Fabric 수준 백업.",
 			'physical_' => array(),
 			'hyperv_' => array(),
 			'vmware_' => array(),
@@ -504,18 +504,18 @@ class EnvClass
 			$OStype = $info['type_'];
 			
 			$availableType = (trim($info[$env."_"]) == "")? array() : explode(",", $info[$env."_"]);
-			$is_possible = false;
+			$is_possible = 0;
 			foreach($availableType as $key=>$val) {
 				if(in_array($OStype, $this->BackupTypeCheckList[$val][$env."_"])) {
-					$rst_desc .= '<a href="#" data-toggle="popover" title="'.$this->BackupTypeCheckList[$val]['name_'].'" data-content="'.$this->BackupTypeCheckList[$val]['exp_'].'" class="available_type" backupType="'.$val.'" />';
+					$rst_desc .= '<a href="#stay_here'. $_POST['cnt'] .'_'. $is_possible .'" name="stay_here'. $_POST['cnt'] .'_'. $is_possible .'" data-toggle="popover" data-trigger="focus" data-html="true" title="'.$this->BackupTypeCheckList[$val]['name_'].'" data-content="'.$this->BackupTypeCheckList[$val]['exp_'].'" class="available_type" backupType="'.$val.'">';
 					$rst_desc .= $this->BackupTypeCheckList[$val]['code_'];
 					$rst_desc .= '</a>';
-					$is_possible = true;
+					$is_possible++;
 				}
 				//$rst_desc .= "<pre>".print_r($availableType, true)."</pre>";
 			}
 
-			if($is_possible == false) {
+			if(0 == $is_possible) {
 				return "<font color='red'>백업 가능한 시나리오가 없습니다. 다른 환경을 선택해주세요.</font>";
 			}
 			else {
