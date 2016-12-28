@@ -1,4 +1,7 @@
-
+	/*
+	 * Copyright (c) 2016, Hyunmook Roh
+	 * nhm0721@gmail.com 
+	 */
 
 
 function num_format(obj) {
@@ -61,6 +64,10 @@ function calc_price(){
 	var _cnt = 0;
 	var _block = new Object();
 	var _diskblock = new Object();
+
+	var storage_total = 0;
+	var price_total = 0;
+
 	var _voltotal = 0;
 	var _volval = 0;
 	$(".div_instance").each(function(){
@@ -81,7 +88,7 @@ function calc_price(){
 				//console.log(" - "+_diskblock.attr('name')+" 내용 없음> "+_volval);
 			}
 		});
-
+console.log(price_total);
 		$.ajax({
 			async: false,
 		    type: 'post',
@@ -99,6 +106,9 @@ function calc_price(){
 		        //console.log(_cnt + "ajax success + ");
    		        $("#div_backup_calc").append(data);
    		        $('[data-toggle="popover"]').popover({placement: "top"}); 
+   		        storage_total += _voltotal;
+   		        price_total += data.find(".tab-pane.active.in").find(".desc.impact").html().replace(/[^0-9]/g,"");
+   		        console.log(price_total);
 		    },
 		    error: function (request, status, error) {
 		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);

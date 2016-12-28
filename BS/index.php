@@ -1,10 +1,13 @@
+<!--
+	<<소스 코드 작성자 정보>>
+	노 현 묵 / hmroh@tangunsoft.com / nhm0721@gmail.com
+-->
 <!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<LINK rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
     <LINK rel="stylesheet" type="text/css" href="./css/font-awesome.min.css" />
-    <!--LINK rel="stylesheet" type="text/css" href="./css/bootstrap-select-1.12.1.css" /-->
 	<LINK rel="stylesheet" type="text/css" href="./css/common.css" />
 </head>
 <body class="container-fluid">
@@ -50,6 +53,11 @@
 			<!--// -->
 		</div>
 	</div>
+	<p class="desc copyright">
+		Azure Backup 환경 검증 및 가격 계산기<br /> 
+		Copyright (c) 2016, Hyunmook Roh<br />
+		nhm0721@gmail.com 
+	</p>
 	<span id="hidden"></span>
 
 	<SCRIPT type="text/javascript" src="./js/jquery-3.1.1.min.js"></SCRIPT>
@@ -58,10 +66,22 @@
 	<SCRIPT type="text/javascript" src="./js/bootstrap.min-3.3.7.js"></SCRIPT>
 	<SCRIPT type="text/javascript" src="./js/check_values.js"></SCRIPT>
 	<SCRIPT type="text/javascript">
-	/*
-	 * 작성자 : hmroh@tangunsoft.com
-	 */
 	$(document).ready(function() {
+
+		//버튼 상단 고정,
+		var $top_div = $("#div_function_buttons");
+		var origOffsetY = $top_div.offset().top;
+
+	    function scroll() {
+			if ($(window).scrollTop() >= origOffsetY) {
+				$('#div_function_buttons').addClass('sticky');
+				$('#wrapper').addClass('menu-padding');
+			} else {
+				$('#div_function_buttons').removeClass('sticky');
+				$('#wrapper').removeClass('menu-padding');
+			}
+		}
+		document.onscroll = scroll;
 
 		//기본 인스턴스 블록 호출,
 		$("#div_instance_list").find(".div_instance[cnt='0']").load("./html_instance_card.php");

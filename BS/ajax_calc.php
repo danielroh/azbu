@@ -33,7 +33,7 @@ class PricingClass
 		$rst = 0;
 
 		if($volume_total <= 0){
-			//echo "<font color='red'>정확한 용량을 입력해주세요.</font>";
+			//echo "<p class='desc warning'>정확한 용량을 입력해주세요.</p>";
 			$rst = 0;
 		}
 		elseif($volume_total <= $this->standard[0]){
@@ -53,7 +53,7 @@ class PricingClass
 		$rst = array();
 
 		if($volume_total <= 0){
-			//echo "<font color='red'>정확한 용량을 입력해주세요.</font>";
+			//echo "<p class='desc warning'>정확한 용량을 입력해주세요.</p>";
 			$rst['LRS'] = 0;
 			$rst['GRS'] = 0;
 		}
@@ -415,10 +415,10 @@ class EnvClass
 	protected $BackupTypeCheckList = array(
 		'ABA' => array(
 			'code_' => "ABA",
-			'name_' => "Azure Backup (MARS) Agent",
+			'name_' => "Azure Backup Agent",
 			'protect_' => array(self::p_FF),
 			'where_' => array(self::w_Az),
-			'exp_' => "최대 하루 3회 백업.<br />응용 프로그램 인식 안함.<br />Linux 지원 안함.",
+			'exp_' => "<li>파일/폴더.</li><li>최대 하루 3회.</li><li>Application 인식 안함.</li><li>Linux 지원 안함.</li>",
 			'physical_' => array("Windows Client", "Windows Server"),
 			'hyperv_' => array("Windows Client", "Windows Server"),
 			'vmware_' => array("Windows Client", "Windows Server"),
@@ -429,7 +429,8 @@ class EnvClass
 			'name_' => "System Center DPM",
 			'protect_' => array(self::p_FF, self::p_VL, self::p_VM, self::p_AP, self::p_WL),
 			'where_' => array(self::w_Az, self::w_Lc, self::w_Tp),
-			'exp_' => "최대 하루 2회 백업.<br />Oracle Workload 백업 지원 안함.<br />Linux는 Hyper-V에 호스팅된 경우에만 백업 가능.<br />VMware VM은 DPM 2012 R2로 백업 가능.",
+			//'exp_' => "최대 하루 2회 백업.<br />Oracle Workload 백업 지원 안함.<br />Linux는 Hyper-V에 호스팅된 경우에만 백업 가능.<br />VMware VM은 DPM 2012 R2로 백업 가능.",
+			'exp_' => "<li>파일/폴더, VM, App Workloads.</li><li>최대 하루 2회.</li><li>Oracle Workload 백업 안됨.</li><li>Linux는 VM만 가능.</li><li>VMware VM 백업 가능.</li><li>On-premise Tape 백업 지원.</li>",
 			'physical_' => array("Windows Client", "Windows Server"),
 			'hyperv_' => array("Windows Client", "Windows Server", "Linux"),
 			'vmware_' => array("Windows Client", "Windows Server"),
@@ -440,7 +441,7 @@ class EnvClass
 			'name_' => "Azure Backup Server",
 			'protect_' => array(self::p_FF, self::p_VL, self::p_VM, self::p_AP, self::p_WL),
 			'where_' => array(self::w_Az, self::w_Lc),
-			'exp_' => "최대 하루 2회 백업.<br />VMware VM/Oracle Workload 백업 지원 안함.<br />Linux는 Hyper-V에 호스팅된 경우에만 백업 가능.<br />활성화 되어있는 Azure 구독 반드시 필요.<br />Tape 백업 지원 안함.<br />System Center License 필요 없음.",
+			'exp_' => "<li>파일/폴더, VM, App Workloads.</li><li>최대 하루 2회.</li><li>Oracle Workload 백업 지원 안함.</li><li>Linux는 Hyper-V일 경우에만 가능.</li><li>Tape 백업 지원 안함.</li><li>항상 활성화된 Azure 구독 필요.</li><li>System Center 라이선스 필요 없음.</li>",
 			'physical_' => array("Windows Client", "Windows Server"),
 			'hyperv_' => array("Windows Client", "Windows Server", "Linux"),
 			'vmware_' => array(),
@@ -451,7 +452,7 @@ class EnvClass
 			'name_' => "Azure IaaS VM Backup",
 			'protect_' => array(self::p_VM, self::p_DK),
 			'where_' => array(self::w_Az),
-			'exp_' => "최대 하루 1회 백업.<br />Disk 수준으로 VM 복원.<br />On-premise VM 대상이 아닌 Azure VM만 지원.<br />Agent 프로그램 설치 불필요.<br />Backup Infrastructure가 필요없는 Fabric 수준 백업.",
+			'exp_' => "<li>VM, All disks.</li><li>최대 하루 1회.</li><li>Windows/Linux 기본 백업.</li><li>Agent 설치 필요 없음.</li><li>Disk 수준으로 VM 복원.</li><li>On-premise VM 미지원.</li><li>Azure VM 백업만 지원.</li><li>Backup Infrastructure가 필요없는 Fabric 수준 백업.</li>",
 			'physical_' => array(),
 			'hyperv_' => array(),
 			'vmware_' => array(),
@@ -473,7 +474,7 @@ class EnvClass
 	}
 
 	private function get_error_text() {
-		return "<font color='gray'>!!--OS와 환경 정보를 모두 선택해주세요.--!!</font>";
+		return "<div class='desc col-xs-12'>OS/환경 정보 미입력.</div>";
 	}
 
 	public function check_volume_total($oscode, $volume_total) {
@@ -498,7 +499,7 @@ class EnvClass
 			return $this->get_error_text();
 		}
 		else {
-			$rst_desc = ""; //결과가 저장되는 변수.
+			$rst_desc = "<div class='desc important col-xs-12'>"; //결과가 저장되는 변수.
 
 			$info = $this->OSInfo[$oscode];
 			$OStype = $info['type_'];
@@ -507,7 +508,7 @@ class EnvClass
 			$is_possible = 0;
 			foreach($availableType as $key=>$val) {
 				if(in_array($OStype, $this->BackupTypeCheckList[$val][$env."_"])) {
-					$rst_desc .= '<a href="#stay_here'. $_POST['cnt'] .'_'. $is_possible .'" name="stay_here'. $_POST['cnt'] .'_'. $is_possible .'" data-toggle="popover" data-trigger="focus" data-html="true" title="'.$this->BackupTypeCheckList[$val]['name_'].'" data-content="'.$this->BackupTypeCheckList[$val]['exp_'].'" class="available_type" backupType="'.$val.'">';
+					$rst_desc .= '<a href="javascript:void(0);" name="stay_here'. $_POST['cnt'] .'_'. $is_possible .'" data-toggle="popover" data-trigger="focus" data-html="true" title="'.$this->BackupTypeCheckList[$val]['name_'].'" data-content="'.$this->BackupTypeCheckList[$val]['exp_'].'" class="available_type" backupType="'.$val.'">';
 					$rst_desc .= $this->BackupTypeCheckList[$val]['code_'];
 					$rst_desc .= '</a>';
 					$is_possible++;
@@ -516,10 +517,10 @@ class EnvClass
 			}
 
 			if(0 == $is_possible) {
-				return "<font color='red'>백업 가능한 시나리오가 없습니다. 다른 환경을 선택해주세요.</font>";
+				return "<div class='desc warning col-xs-12'>백업 가능한 시나리오 없음.</div>";
 			}
 			else {
-				return $rst_desc;
+				return $rst_desc."</div>";
 			}
 		}
 	}
@@ -553,10 +554,10 @@ switch ($_Action) {
 		$chk_volume = $env_obj->check_volume_total($_OSCode, $_VolTotal); 
 		switch ($chk_volume) {
 			case -1:
-				$chk_volume_desc = "<font color=gray>(용량 한도값 없음.)</font>";
+				$chk_volume_desc = "<div class='desc col-xs-12'>선택된 환경에 대한 용량 한도 없음.</div>";
 				break;
 			case 0:
-				$chk_volume_desc = "<font color=red>(용량 한도 초과!)</font>";
+				$chk_volume_desc = "<div class='desc warning col-xs-12'>용량 한도 초과!</div>";
 				break;
 			default:
 				$chk_volume_desc = "";
@@ -590,33 +591,57 @@ switch ($_Action) {
 	<div class="calc-header">
 		<?php echo trim($_POST['instance_name']) == ""? "(이름없음)" : $_POST['instance_name']; ?>
 	</div>
-	<div class="calc-content tab-content">
+	<div class="calc-content tab-content col-xs-12">
 		<div class="protect_price">
-			인스턴스 보호 비용 : 
-			<span class="price"><?php echo number_format($p_protect); ?>원</span>/월
+			<div class="col-xs-12 col-md-6 col-lg-6">
+				인스턴스 보호 비용 : 
+			</div>
+			<div class="desc important col-xs-12 col-md-6 col-lg-6">
+				<?php echo number_format($p_protect); ?>원/월
+			</div>
 		</div>
         <div class="tab-pane fade LRS active in" id="tab<?php echo $_POST['cnt']; ?>_1" aria-expanded="true">
 			<div class="storage_price">
-				로컬 중복 저장소(LRS) 사용료 : <span class="price"><?php echo number_format($p_storage['LRS']); ?>원</span>/월
+				<div class="col-xs-12 col-md-6 col-lg-6">
+					저장소 비용 : 
+				</div>
+				<div class="desc important col-xs-12 col-md-6 col-lg-6">
+					<?php echo number_format($p_storage['LRS']); ?>원/월
+				</div>
 				<?php echo $chk_volume_desc; ?>
 			</div>
 			<div class="backup_desc">
+				<div class="col-xs-12 col-md-6 col-lg-6">
+					백업 가능한 시나리오 : 
+				</div>
 				<?php echo $backup_option; ?>
 			</div>
 			<div class="total_price">
-				약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['LRS'])/1000)*1000); ?>원</span>/월
+				<div class="desc impact col-xs-12">
+					약 <?php echo number_format(ceil(($p_protect + $p_storage['LRS'])/1000)*1000); ?>원/월
+				</div>
 			</div>
 		</div>
 		<div class="tab-pane fade GRS" id="tab<?php echo $_POST['cnt']; ?>_2" aria-expanded="false">
 			<div class="storage_price">
-				지역 중복 저장소(GRS) 사용료 : <span class="price"><?php echo number_format($p_storage['GRS']); ?>원</span>/월
+				<div class="col-xs-12 col-md-6 col-lg-6">
+					저장소 비용 : 
+				</div>
+				<div class="desc important col-xs-12 col-md-6 col-lg-6">
+					<?php echo number_format($p_storage['GRS']); ?>원/월
+				</div>
 				<?php echo $chk_volume_desc; ?>
 			</div>
 			<div class="backup_desc">
+				<div class="col-xs-12 col-md-6 col-lg-6">
+					백업 가능한 시나리오 : 
+				</div>
 				<?php echo $backup_option; ?>
 			</div>
 			<div class="total_price">
-				약 <span class="price impact"><?php echo number_format(ceil(($p_protect + $p_storage['GRS'])/1000)*1000); ?>원</span>/월
+				<div class="desc impact col-xs-12">
+					약 <?php echo number_format(ceil(($p_protect + $p_storage['GRS'])/1000)*1000); ?>원/월
+				</div>
 			</div>
 		</div>
 	</div>

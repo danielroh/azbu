@@ -46,8 +46,43 @@ select {
 input[name='instance'] {
 	border: 0px;
 }
-span.price {
+
+/* ================================
+	Component Classes
+================================ */
+.desc {
+	font-size: 0.9em;
+	color: gray;
+	text-align: right;
+}
+.desc.warning {
+	color: red;
+}
+.desc.important {
+	color: black;
+	font-size: 1.0em;
 	font-weight: bold;
+}
+.desc.impact {
+	text-align: right;
+	font-size: 1.3em;
+	color: red;
+	font-weight: bold;
+	line-height: 36px;
+}
+.sticky {
+	width: 100%;
+	z-index: 9999;
+	top: 0px;
+	position: fixed;
+	opacity: 0.7;
+}
+.menu-padding {
+	padding-top: 60px;
+}
+.copyright {
+	font-size: 0.8em;
+	margin-top: 30px;
 }
 
 /* ================================
@@ -68,6 +103,11 @@ span.price {
 	border-style: solid;
     border-width: 0px 1px 1px 1px;
     border-color: #ddd;
+}
+.calc-content:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 .instance-header {
 }
@@ -108,7 +148,7 @@ span.price {
 #div_function_buttons .div_for_margin * {
 	width: 100%;
 	font-weight: bold;
-	font-size: 1.4em;
+	font-size: 1.2em;
 }
 .div_instance {
 	background-color: #d0e9ff;
@@ -137,20 +177,12 @@ img.del_instance_card:hover {
 .div_instance:hover img.del_instance_card {
 	display: block;
 }
-
-
-
-.total_price {
-	text-align: right;
-	font-size: 1.2em;
-	color: red;
-	font-weight: bold;
-}
-
 .backup_desc .available_type {
-	margin-right: 10px;
+	margin-left: 10px;
 }
 
-
+.popover.fade.top.in {
+	max-width: 100%;
+}
 
 
