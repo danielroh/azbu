@@ -185,4 +185,17 @@ img.del_instance_card:hover {
 	max-width: 100%;
 }
 
-
+#price_total {
+	text-align: center;
+}
+#price_total #show_price_total {
+	width: 100%;
+	margin: 0px auto;
+}
+#storage_total {
+	height: 100%;
+}
+#storage_total #show_storage_total {
+	width: 100%;
+	margin: 0px auto;
+}

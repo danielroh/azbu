@@ -1,8 +1,7 @@
-	/*
-	 * Copyright (c) 2016, Hyunmook Roh
-	 * nhm0721@gmail.com 
-	 */
-
+/*
+ * Copyright (c) 2016, Hyunmook Roh
+ * nhm0721@gmail.com 
+ */
 
 function num_format(obj) {
 	var ttt = obj.value;
@@ -88,7 +87,7 @@ function calc_price(){
 				//console.log(" - "+_diskblock.attr('name')+" 내용 없음> "+_volval);
 			}
 		});
-console.log(price_total);
+
 		$.ajax({
 			async: false,
 		    type: 'post',
@@ -107,8 +106,8 @@ console.log(price_total);
    		        $("#div_backup_calc").append(data);
    		        $('[data-toggle="popover"]').popover({placement: "top"}); 
    		        storage_total += _voltotal;
-   		        price_total += data.find(".tab-pane.active.in").find(".desc.impact").html().replace(/[^0-9]/g,"");
-   		        console.log(price_total);
+   		        //price_total += data.find(".tab-pane.active.in").find(".desc.impact").html().replace(/[^0-9]/g,"");
+   		        console.log(storage_total);
 		    },
 		    error: function (request, status, error) {
 		        console.log('code: '+request.status+"\n"+'message: '+request.responseText+"\n"+'error: '+error);
@@ -117,5 +116,6 @@ console.log(price_total);
 
 	});
 	
+	$("#storage_total").find(".show_storage_total").html("저장소 용량 합계 : " + $.number(storage_total) + "GB");
 
 }

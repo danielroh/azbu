@@ -49,8 +49,26 @@
 				<!--// -->
 			</div>
 		</div>
+		
+		<div id="info-total" class="col-xs-12 col-md-6 col-lg-6">
+			<div id="price_total" class="col-xs-12 col-md-6 col-lg-6">
+				<div class="div_for_margin col-xs-12">
+					<input type="button" id="show_price_total" class="btn btn-info btn-md top_button" value="합계 금액">
+				</div>
+			</div>
+			<div id="storage_total" class="col-xs-12 col-md-6 col-lg-6">
+				<div class="div_for_margin col-xs-12">
+					<div id="show_storage_total" class="btn btn-info">
+						저장소 용량 합계 : 0GB
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div id="div_backup_calc" class="col-xs-12 col-md-6 col-lg-6">
-			<!--// -->
+			<div class="calc_instance" cnt="0">
+				<!--// -->
+			</div>
 		</div>
 	</div>
 	<p class="desc copyright">

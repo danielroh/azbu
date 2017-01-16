@@ -25,8 +25,8 @@ class PricingClass
 		//Nothing.
 	}
 
-	public $standard = Array(50, 500);
-	public $protect = Array(6000, 12000);
+	public $standard = Array(50, 500); //Azure Backup 인스턴스 보호비용 - 용량 기준
+	public $protect = Array(6000, 12000); //Azure Backup 인스턴스 보호비용 - 금액 기준
 	public $storage = Array('LRS'=>18, 'GRS'=>36); //https://azure.microsoft.com/ko-kr/pricing/details/storage/blobs/ --> Blob Storage[Cool]
 
 	public function get_protection_price($volume_total) {
